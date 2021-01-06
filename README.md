@@ -1,7 +1,7 @@
 # Bookmyrail
 
 Railway Ticket booking system with psql database in backend.
-![homepage](https://github.com/SoniGarima/book-my-rail/tree/main/Demo/demo1.png)
+![homepage](Demo/demo1.png)
 
 
 ## Schema
@@ -40,13 +40,13 @@ Bookings Table contains the total number of seats that have been booked for a tr
 
 Initially, the admin needs to release the trains he/she wants to run along with the dates on which they shall run.
 
-![homepage](https://github.com/SoniGarima/book-my-rail/tree/main/Demo/demo3.png)
+![homepage](Demo/demo3.png)
 
-![homepage](https://github.com/SoniGarima/book-my-rail/tree/main/Demo/demo4.png)
+![homepage](Demo/demo4.png)
 
 The user(booking agent) needs to login(register if not registered) and then enter the train number whose tickets he wants to book. The user needs to provide the train number, number of tickets, coach type and date of travel.
 
-![homepage](https://github.com/SoniGarima/book-my-rail/tree/main/Demo/booking.gif)
+![homepage](Demo/booking.gif)
 
 If the concerned train is running on that date and has tickets available to suffice the needs of the user(booking agent) then the user shall be redirected to the next page where he needs to enter the details such as name, age and gender of all the passengers for whom the tickets need to be booked and thereafter submitting the details the tickets shall appear with a ticket number, berth type, berth number, coach number, name, age and gender.
 
@@ -112,7 +112,7 @@ Affected tables is **Trains**.
 - View All Bookings
         - Admins can also view details of bookings made by all the users.
 - Search trains of your interest
-![homepage](https://github.com/SoniGarima/book-my-rail/tree/main/Demo/searchtrains.gif)
+![homepage](Demo/searchtrains.gif)
 
 ## Tech Stack
 
