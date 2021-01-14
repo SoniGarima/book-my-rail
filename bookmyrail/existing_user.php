@@ -1,6 +1,11 @@
 <?php
-    require "connectdb.php";
+require "connectdb.php";
     session_start();
+    // print_r($_SESSION);
+    if(isset($_SESSION['type'])  && isset($_SESSION['auth'])){
+      if($_SESSION['auth'] == 'yes' && $_SESSION['type'] == 'user')
+        {header('location:user.php');}
+    }
     if(isset($_POST['email']) && isset($_POST['password'])){
         $psql = "select * from rail_data_schema.users where rail_data_schema.users.email = '$_POST[email]'and rail_data_schema.users.password = '$_POST[password]'";
         $result = pg_query($psql); 
@@ -8,6 +13,8 @@
         $resultArr = pg_fetch_all($result);
         
         if($row > 0){
+            $_SESSION['type'] = 'user';
+            $_SESSION['auth'] = 'yes';
             $_SESSION['ID'] = $resultArr[0]['user_id'];
             $_SESSION['name'] = $resultArr[0]['name'];
             header("Location:user.php");

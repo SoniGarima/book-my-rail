@@ -1,7 +1,13 @@
 <?php
 // error_reporting(E_ALL ^ E_WARNING); 
+require "connectdb.php";
     session_start();
-    require "connectdb.php";
+    // print_r($_SESSION);
+    if(empty($_SESSION['type'])  || empty($_SESSION['auth'] || empty($_SESSION['ID']))){
+      header('location:existing_admin.php');
+    }
+    if(!($_SESSION['auth'] == 'yes' && $_SESSION['type'] == 'admin'))
+        {header('location:existing_admin.php');}
     $uu =$_SESSION['ID'];
 // define variables and set to empty values
 $numberErr = $sourceErr = $destErr =$dateErr=$acErr=$sleepErr= $runningErr = $lastdateErr= "";
@@ -114,6 +120,7 @@ if(isset($_POST['number']) && $numberErr =="" && $sourceErr =="" && $destErr =="
         <a href="search.php" class="list-group-item list-group-item-action bg-light">Search</a>
         <a href="bookings.php" class="list-group-item list-group-item-action bg-light">Bookings</a>
         <a href="all-users.php" class="list-group-item list-group-item-action bg-light">Users</a>
+        <a href="logout.php" class= "list-group-item list-group-item-action bg-warning">Log Out</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->

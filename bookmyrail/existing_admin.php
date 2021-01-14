@@ -1,15 +1,22 @@
 <?php
     require "connectdb.php";
     session_start();
+    // print_r($_SESSION);
+    if(!empty($_SESSION['type'])  && !empty($_SESSION['auth'] && !empty($_SESSION['ID']))){
+      if($_SESSION['auth'] == 'yes' && $_SESSION['type'] == 'admin')
+        {header('location:admin.php');}
+    }
     if(isset($_POST['email']) && isset($_POST['password'])){
     $psql = "select * from rail_data_schema.admins where rail_data_schema.admins.email = '$_POST[email]' and rail_data_schema.admins.password = '$_POST[password]'";
     $result = pg_query($psql); 
     $row = pg_num_rows($result);
     $resultArr = pg_fetch_all($result);
     if($row > 0){
+        $_SESSION['type'] = 'admin';
+        $_SESSION['auth'] = 'yes';
         $_SESSION['ID'] = $resultArr[0]['admin_id'];
         $_SESSION['name'] = $resultArr[0]['name'];
-        header("Location:admin.php");
+        header('Location:admin.php');
     }
     else{
         echo "Invalid login details :(";

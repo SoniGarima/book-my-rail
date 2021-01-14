@@ -1,7 +1,13 @@
 <?php
 //error_reporting(E_ALL ^ E_WARNING); 
+require "connectdb.php";
     session_start();
-    require "connectdb.php";
+    // print_r($_SESSION);
+    if(empty($_SESSION['type'])  || empty($_SESSION['auth'] || empty($_SESSION['ID']))){
+      header('location:existing_user.php');
+    }
+    if(!($_SESSION['auth'] == 'yes' && $_SESSION['type'] == 'user'))
+        {header('location:existing_user.php');}
 
     $numberErr = $ticketErr = $coachErr =$idErr= $dateErr= "";
     $ticket = $coach = $date= "";
@@ -155,6 +161,7 @@
         <a href="existing_admin.php" class="list-group-item list-group-item-action bg-light">Admins</a>
         <a href="existing_user.php" class="list-group-item list-group-item-action bg-light">Users</a>
         <a href="search.php" class="list-group-item list-group-item-action bg-light">Search</a>
+        <a href="logout.php" class= "list-group-item list-group-item-action bg-warning">Log Out</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
